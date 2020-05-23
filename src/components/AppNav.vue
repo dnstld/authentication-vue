@@ -9,6 +9,9 @@
     <router-link v-if="!loggedIn" to="/login" class="button">
       Login
     </router-link>
+    <button v-else class="button" @click="logout">
+      Logout
+    </button>
   </div>
 </template>
 
@@ -18,6 +21,11 @@ import { authComputed } from '@/vuex/helpers.js'
 export default {
   computed: {
     ...authComputed
+  },
+  methods: {
+    logout () {
+      this.$store.dispatch('logout')
+    }
   }
 }
 </script>
